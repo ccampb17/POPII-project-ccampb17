@@ -1,5 +1,7 @@
 package fraction;
 
+// DO NOT NEED TO EDIT THIS AT ALL, 分かった？
+
 /**
  * Representing fractions of the form numerator and denominator
  * The object should be immutable.
