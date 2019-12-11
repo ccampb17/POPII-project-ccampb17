@@ -1,6 +1,13 @@
 package fraction;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class FractionImpl implements Fraction {
+
+
     /**
      * Parameters are the <em>numerator</em> and the <em>denominator</em>.
      * Normalize the fraction as you create it.
@@ -12,12 +19,90 @@ public class FractionImpl implements Fraction {
      * @param numerator
      * @param denominator
      */
+    //nmr for the numerator, dmr for the denominator.
+    //private because we don't want any naughty people fiddling with our values
+    //therefore need getters. don't need setters because we don't need to mutate the fraction. any changes will
+    //produce new fraction objects.
+
+    //initialise vars
+    private int nmr, dmr;
+
+    //getters
+    public int getNmr() {
+        return nmr;
+    }
+
+    public int getDmr() {
+        return dmr;
+    }
+
 
 
 
     public FractionImpl(int numerator, int denominator) {
         // TODO
+
+        //throw exc if dmr is 0
+        if (denominator == 0) throw new ArithmeticException("Denominator cannot be zero because maths.");
+
+        //init the nmr and dmr to start with
+        nmr = numerator;
+        dmr = denominator;
+
+        //TODO normalise the fraction to smallest poss values
+        nmr = nmr/lcd(numerator, denominator);
+        dmr = dmr/lcd(numerator, denominator);
+
+
+
+
+
+
+        //make sure positive nmr over negative dmr normalises to the other way around
+        if (nmr > 0 & dmr < 0){
+            nmr *= -1;
+            dmr *= -1;
+        }
+
     }
+    //helper method to generate primes up to the input value so we can simplify fractions and
+    //perform operations that require lowest common denominator later on.
+    //has to be a list as we don't know the size before starting
+    public static List<Integer> listPrimesTo(int n){
+        List<Integer> result = new ArrayList<Integer>();
+        result = IntStream.rangeClosed(2, n)
+                .filter(x -> isPrime(x)).boxed()
+                .collect(Collectors.toList());
+        return result;
+
+    }
+    //helper method for the above to check if a number is prime
+    private static boolean isPrime(int n){
+        for (int i = 2; i*i < n; i++){
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    //helper method to find the LCD of two ints
+    public static int lcd(int a, int b){
+
+        //get largest because we need to iterate up to this
+        int largest;
+        if (a>b) largest = a;
+        else largest = b;
+
+        int lcd;
+
+        for (int i = 2; i<listPrimesTo(largest).size(); i++){
+            if ( (a % listPrimesTo(largest).get(i) == 0) & (b % listPrimesTo(largest).get(i) == 0){
+                lcd = listPrimesTo(largest).get(i);
+                break;
+            }
+        }
+        return lcd;
+    }
+
 
     /**
      * The parameter is the numerator and <pre>1</pre> is the implicit denominator.
@@ -26,6 +111,9 @@ public class FractionImpl implements Fraction {
      */
     public FractionImpl(int wholeNumber) {
         // TODO
+        nmr = wholeNumber;
+        dmr = 1;
+
     }
 
     /**
@@ -39,6 +127,8 @@ public class FractionImpl implements Fraction {
      *
      * @param fraction the string representation of the fraction
      */
+
+
     public FractionImpl(String fraction) {
         // TODO
     }
