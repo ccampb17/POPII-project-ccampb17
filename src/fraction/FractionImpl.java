@@ -65,6 +65,10 @@ public class FractionImpl implements Fraction {
         }
 
     }
+    //!
+    //NB i did not see the bit about euclid's theorem so I did my own method which is way cooler and i'm definitely
+    //very proud about how much time I spent coming up with it...
+
     //helper method to generate primes up to the input value so we can simplify fractions and
     //perform operations that require lowest common denominator later on.
     //has to be a list as we don't know the size before starting
@@ -95,7 +99,7 @@ public class FractionImpl implements Fraction {
         int lcd;
 
         for (int i = 2; i<listPrimesTo(largest).size(); i++){
-            if ( (a % listPrimesTo(largest).get(i) == 0) & (b % listPrimesTo(largest).get(i) == 0){
+            if ( (a % listPrimesTo(largest).get(i) == 0) & (b % listPrimesTo(largest).get(i) == 0)){
                 lcd = listPrimesTo(largest).get(i);
                 break;
             }
@@ -153,20 +157,17 @@ public class FractionImpl implements Fraction {
         }
 
         //now if the input is just an integer, convert it to that/1
-        //also include try-catch to get bad input
+        //also include try-catch to get bad input - if this input is not accepted it must be a silly input
             else{
                 try {
                     this.nmr = Integer.parseInt(fraction);
                     this.dmr = 1;
+
                 } catch (NumberFormatException nfe) {
                     throw new NumberFormatException("Your input must be composed of one integer, or two separated by a '/'.");
 
                 }
             }
-            //if it's not either of the above, the input must be bad
-                else{
-                    throw new NumberFormatException("Your input must be composed of one integer, or two separated by a '/'.");
-                }
 
 
 
@@ -177,7 +178,15 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction add(Fraction f) {
-        return null;
+
+
+        //to calculate x/y + w/z
+        // you do
+        //(x*z)+(w*y)/(y*z)
+
+        return new FractionImpl(((this.nmr*f.dmr) + (f.nmr*this.dmr)), (this.dmr*f.dmr));
+
+
     }
 
     /**
@@ -185,7 +194,9 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction subtract(Fraction f) {
-        return null;
+
+        //same as adding but with a minus sign
+        return new FractionImpl(((this.nmr*f.dmr) - (f.nmr*this.dmr)), (this.dmr*f.dmr));
     }
 
     /**
@@ -193,7 +204,10 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction multiply(Fraction f) {
-        return null;
+        //to work out x/y * w/z
+        //you do
+        //(x*w)/(y*z)
+        return new FractionImpl((this.nmr*f.nmr), (this.dmr*f.dmr));
     }
 
     /**
@@ -201,7 +215,11 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction divide(Fraction f) {
-        return null;
+
+        //to calculate x/y ÷ w/z
+        //you flip the second one and multiply, i.e.:
+        // (x*z) / (y*w)
+        return new FractionImpl((this.nmr*f.dmr), (this.dmr*f.nmr));
     }
 
     /**
@@ -209,15 +227,22 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction abs() {
-        return null;
+        if (this.nmr < 0){
+            return new FractionImpl((this.nmr*-1),this.dmr);
+        }
+        else{
+            return new FractionImpl(this.nmr, this.dmr);
+        }
+
     }
 
     /**
      * @inheritDoc
      */
     @Override
-    public Fraction negate() {
-        return null;
+    public FractionImpl negate() {
+        //also allows negative numbers to be positivised
+        return new FractionImpl((this.nmr*-1), this.dmr);
     }
 
     /**
@@ -248,8 +273,9 @@ public class FractionImpl implements Fraction {
      * @inheritDoc
      */
     @Override
-    public Fraction inverse() {
-        return null;
+    public FractionImpl inverse() {
+        //set the numerator as the denominator and vice versa
+        return new FractionImpl(this.dmr, this.nmr);
     }
 
     /**
@@ -265,6 +291,14 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public String toString() {
-        return null;
+
+        if (dmr == 1 | dmr == 0){
+            return Integer.toString(nmr);
+        }
+        else{
+
+            return String.join("/", Integer.toString(nmr), Integer.toString(dmr));
+        }
+
     }
 }

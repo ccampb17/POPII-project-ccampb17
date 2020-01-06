@@ -19,7 +19,7 @@ public interface Fraction extends Comparable<Fraction> {
 
     /**
      * Returns a new <pre>Fraction</pre> that is the <em>difference</em> of <pre>this</pre> minus the parameter
-     * <pre>a/b - c/d</pre> is <pre>(ad - bc)/bd</pre>
+     * <pre>a/b - c/d</pre> is <pre>(ad  - bc)/bd</pre>
      *
      * @param f the fraction to subtract from the current fraction
      * @return the result of the subtraction
