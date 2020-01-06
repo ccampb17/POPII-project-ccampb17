@@ -280,10 +280,23 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * This method shows the difference between the two numbers to the nearest integer (as per specification).
+     * Positive output means the object upon which the method is called is larger.
+     * Negative output means the object used as a parameter is larger.
+     * Zero means that they are the same.
      */
     @Override
     public int compareTo(Fraction o) {
-        return 0;
+
+        // Convert them to floats to compare their values, unless they are the same
+        // because can't do float == float
+        float thisdec = nmr/dmr;
+        float thatdec = o.nmr/o.dmr;
+
+        if (thisdec > thatdec) return Math.round(Math.abs(thisdec - thatdec));
+        else if (thatdec > thisdec) return Math.round(-1*(Math.abs(thisdec - thatdec)));
+        else if (nmr == o.nmr & dmr == o.dmr) return 0;
+
     }
 
     /**
