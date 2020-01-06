@@ -131,6 +131,45 @@ public class FractionImpl implements Fraction {
 
     public FractionImpl(String fraction) {
         // TODO
+
+        //get rid of whitespace in the input
+        fraction = fraction.replaceAll("\\s+", "");
+
+        //does the input contain a forward slash? then it can be converted to a nmr and dmr fraction
+        //put a try-catch clause to check for bad input
+
+        if (fraction.contains("/")) {
+            String[] input = new String[2];
+            input = fraction.split("/");
+
+            try {
+                this.nmr = Integer.parseInt(input[0]);
+                this.dmr = Integer.parseInt(input[1]);
+            }
+
+            catch (NumberFormatException nfe) {
+                throw new NumberFormatException("Your input must be composed of one integer, or two separated by a '/'.");
+            }
+        }
+
+        //now if the input is just an integer, convert it to that/1
+        //also include try-catch to get bad input
+            else{
+                try {
+                    this.nmr = Integer.parseInt(fraction);
+                    this.dmr = 1;
+                } catch (NumberFormatException nfe) {
+                    throw new NumberFormatException("Your input must be composed of one integer, or two separated by a '/'.");
+
+                }
+            }
+            //if it's not either of the above, the input must be bad
+                else{
+                    throw new NumberFormatException("Your input must be composed of one integer, or two separated by a '/'.");
+                }
+
+
+
     }
 
     /**
