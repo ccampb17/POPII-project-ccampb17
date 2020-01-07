@@ -40,20 +40,20 @@ public class FractionImpl implements Fraction {
 
 
     public FractionImpl(int numerator, int denominator) {
-        // TODO
 
-        //throw exc if dmr is 0
-        if (denominator == 0) throw new ArithmeticException("Denominator cannot be zero because maths.");
+
+
 
         //init the nmr and dmr to start with
         nmr = numerator;
         dmr = denominator;
 
         //TODO normalise the fraction to smallest poss values
-        nmr = nmr/lcd(numerator, denominator);
-        dmr = dmr/lcd(numerator, denominator);
+        nmr = nmr/gcd(numerator, denominator);
+        dmr = dmr/gcd(numerator, denominator);
 
-
+        //throw exc if dmr is 0
+        if (denominator == 0) throw new ArithmeticException("Denominator cannot be zero because maths.");
 
 
 
@@ -65,11 +65,43 @@ public class FractionImpl implements Fraction {
         }
 
     }
-    //!
-    //NB i did not see the bit about euclid's theorem so I did my own method which is way cooler and i'm definitely
-    //very proud about how much time I spent coming up with it...
 
-    //helper method to generate primes up to the input value so we can simplify fractions and
+    // helper method to find the greatest common divisor of two ints... see below for my fun tangent to find the
+    // lowest common divisor...
+
+    public static int gcd(int a, int b){
+
+        // i made this based on doing a few GCD calculations on paper.
+        // before i had a clunkier method that used lots of variables and if statements
+        // i think this is more elegant though.
+
+        //have to use absolute values otherwise we get stuck in a naughty endless loop.
+
+        a = Math.abs(a);
+        b = Math.abs(b);
+
+        while (a != 0 & b!= 0){
+            if (a > b){
+                a %= b;
+            }
+            // previously this was 'else if b > a' but this led to an endless loop if a and b were the same
+            else {
+                b %= a;
+            }
+
+        }
+
+        if (a == 0) return b;
+        else return a;
+
+    }
+
+    //!
+    //NB i did not see the bit about euclid's theorem and decided to make something that finds the
+    // LOWEST common denominator instead of greatest for some reason. I've left it here in case it is interesting and/or
+    // useful to me later on. It was definitely good practice coming up with it!
+
+    //helper method to generate primes up to the input value so we can
     //perform operations that require lowest common denominator later on.
     //has to be a list as we don't know the size before starting
     public static List<Integer> listPrimesTo(int n){
@@ -89,6 +121,8 @@ public class FractionImpl implements Fraction {
     }
 
     //helper method to find the LCD of two ints
+    // again this is actually redundant so have left it here for curiosity purposes
+
     public static int lcd(int a, int b){
 
         //get largest because we need to iterate up to this
@@ -96,7 +130,7 @@ public class FractionImpl implements Fraction {
         if (a>b) largest = a;
         else largest = b;
 
-        int lcd;
+        int lcd = 2;
 
         for (int i = 2; i<listPrimesTo(largest).size(); i++){
             if ( (a % listPrimesTo(largest).get(i) == 0) & (b % listPrimesTo(largest).get(i) == 0)){
@@ -134,16 +168,17 @@ public class FractionImpl implements Fraction {
 
 
     public FractionImpl(String fraction) {
-        // TODO
 
         //get rid of whitespace in the input
+        // NB I really love regular expressions
+
         fraction = fraction.replaceAll("\\s+", "");
 
         //does the input contain a forward slash? then it can be converted to a nmr and dmr fraction
         //put a try-catch clause to check for bad input
 
         if (fraction.contains("/")) {
-            String[] input = new String[2];
+            String[] input;
             input = fraction.split("/");
 
             try {
@@ -169,6 +204,12 @@ public class FractionImpl implements Fraction {
                 }
             }
 
+            //if statement to catch if the dmr entered is negative
+        if (this.dmr<0){
+            nmr *= -1;
+            dmr *= -1;
+        }
+
 
 
     }
@@ -184,7 +225,7 @@ public class FractionImpl implements Fraction {
         // you do
         //(x*z)+(w*y)/(y*z)
 
-        return new FractionImpl(((this.nmr*f.dmr) + (f.nmr*this.dmr)), (this.dmr*f.dmr));
+        return new FractionImpl(((this.nmr*((FractionImpl)f).dmr) + ((FractionImpl)f).nmr*this.dmr), (this.dmr*((FractionImpl)f).dmr));
 
 
     }
@@ -196,7 +237,7 @@ public class FractionImpl implements Fraction {
     public Fraction subtract(Fraction f) {
 
         //same as adding but with a minus sign
-        return new FractionImpl(((this.nmr*f.dmr) - (f.nmr*this.dmr)), (this.dmr*f.dmr));
+        return new FractionImpl(((this.nmr*((FractionImpl)f).dmr) - (((FractionImpl)f).nmr*this.dmr)), (this.dmr*((FractionImpl)f).dmr));
     }
 
     /**
@@ -207,7 +248,8 @@ public class FractionImpl implements Fraction {
         //to work out x/y * w/z
         //you do
         //(x*w)/(y*z)
-        return new FractionImpl((this.nmr*f.nmr), (this.dmr*f.dmr));
+
+        return new FractionImpl((this.nmr*((FractionImpl)f).nmr), (this.dmr*((FractionImpl)f).dmr));
     }
 
     /**
@@ -219,7 +261,7 @@ public class FractionImpl implements Fraction {
         //to calculate x/y ÷ w/z
         //you flip the second one and multiply, i.e.:
         // (x*z) / (y*w)
-        return new FractionImpl((this.nmr*f.dmr), (this.dmr*f.nmr));
+        return new FractionImpl((this.nmr*((FractionImpl)f).dmr), (this.dmr*((FractionImpl)f).nmr));
     }
 
     /**
@@ -291,11 +333,18 @@ public class FractionImpl implements Fraction {
         // Convert them to floats to compare their values, unless they are the same
         // because can't do float == float
         float thisdec = nmr/dmr;
-        float thatdec = o.nmr/o.dmr;
+        float thatdec = ((FractionImpl)o).nmr/((FractionImpl)o).dmr;
 
-        if (thisdec > thatdec) return Math.round(Math.abs(thisdec - thatdec));
-        else if (thatdec > thisdec) return Math.round(-1*(Math.abs(thisdec - thatdec)));
-        else if (nmr == o.nmr & dmr == o.dmr) return 0;
+
+        if (thisdec > thatdec) {
+            return Math.round(Math.abs(thisdec - thatdec));
+        }
+        else if (thatdec > thisdec) {
+            return Math.round(-1*(Math.abs(thisdec - thatdec)));
+        }
+        else { //if (nmr == ((FractionImpl)o).nmr & dmr == ((FractionImpl)o).dmr) {
+            return 0;
+        }
 
     }
 

@@ -2,20 +2,18 @@ package fraction;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class FractionImplTest {
+class FractionImplTest_orig {
 
     @Test
-    void gcd() {
+    void getNmr() {
+    }
+
+    @Test
+    void getDmr() {
     }
 
     @Test
     void listPrimesTo() {
-    }
-
-    @Test
-    void lcd() {
     }
 
     @Test
