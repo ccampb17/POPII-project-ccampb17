@@ -37,7 +37,14 @@ public class FractionImpl implements Fraction {
     }
 
 
-
+    /**
+     * Basic constructor that takes two integers and creates a fraction.
+     * Normalises the fraction (ie expresses it in its lowest terms) using the GCD helper method.
+     * @see #gcd(int, int)
+     *
+     * @param numerator integer that will be the numerator
+     * @param denominator   integer that will be the denominator
+     */
 
     public FractionImpl(int numerator, int denominator) {
 
@@ -48,7 +55,7 @@ public class FractionImpl implements Fraction {
         nmr = numerator;
         dmr = denominator;
 
-        //TODO normalise the fraction to smallest poss values
+
         nmr = nmr/gcd(numerator, denominator);
         dmr = dmr/gcd(numerator, denominator);
 
@@ -68,6 +75,13 @@ public class FractionImpl implements Fraction {
 
     // helper method to find the greatest common divisor of two ints... see below for my fun tangent to find the
     // lowest common divisor...
+
+    /**
+     * Finds the greatest common divisor of two integers.
+     * @param a first input integer
+     * @param b second input integer
+     * @return  the greatest common divisor of the two inputs.
+     */
 
     public static int gcd(int a, int b){
 
@@ -104,6 +118,13 @@ public class FractionImpl implements Fraction {
     //helper method to generate primes up to the input value so we can
     //perform operations that require lowest common denominator later on.
     //has to be a list as we don't know the size before starting
+
+    /**
+     * Generates a list of primes up to the given number.
+     * Does not work well for very large numbers.
+     * @param n Number up to which you want primes listed
+     * @return  The list of primes up to that number.
+     */
     public static List<Integer> listPrimesTo(int n){
         List<Integer> result = new ArrayList<Integer>();
         result = IntStream.rangeClosed(2, n)
@@ -112,7 +133,15 @@ public class FractionImpl implements Fraction {
         return result;
 
     }
+
     //helper method for the above to check if a number is prime
+
+    /**
+     * A helper method to determine if a given number is prime.
+     * Does not work very well for very large numbers.
+     * @param n Number to be tested
+     * @return  true if prime, false if not
+     */
     private static boolean isPrime(int n){
         for (int i = 2; i*i < n; i++){
             if (n % i == 0) return false;
@@ -123,6 +152,12 @@ public class FractionImpl implements Fraction {
     //helper method to find the LCD of two ints
     // again this is actually redundant so have left it here for curiosity purposes
 
+    /**
+     * Finds the lowest common denominator of two integers and returns it.
+     * @param a first input integer
+     * @param b second input integer
+     * @return  the resulting lowest common denominator
+     */
     public static int lcd(int a, int b){
 
         //get largest because we need to iterate up to this
@@ -148,7 +183,7 @@ public class FractionImpl implements Fraction {
      * @param wholeNumber representing the numerator
      */
     public FractionImpl(int wholeNumber) {
-        // TODO
+
         nmr = wholeNumber;
         dmr = 1;
 
@@ -162,6 +197,14 @@ public class FractionImpl implements Fraction {
      * if given a string representing a fraction whose denominator is zero.
      * <p>
      * You may find it helpful to look at the available String API methods in the Java API.
+     *
+     * <p>
+     *     This is a very important method as it will take in the toString output and allow operations to be performed
+     *     using this alone.
+     *
+     *     I tried to keep it short and sweet, using regular expression-based methods instead of iterating over the
+     *     input string and looking for particular characters.
+     * </p>
      *
      * @param fraction the string representation of the fraction
      */
@@ -216,6 +259,10 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * Adds two fractions together, returning the result as a new object.
+     *
+     * @param f the fraction to be added
+     * @return the result of the addification as a new object.
      */
     @Override
     public Fraction add(Fraction f) {
@@ -232,6 +279,9 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * Subtracts one fraction from another.
+     * @param f the fraction to be subtracted.
+     * @result the result of the subtraction as a new object.
      */
     @Override
     public Fraction subtract(Fraction f) {
@@ -242,6 +292,10 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * Facilitates the multiplication of two fractions, returning the result as a new object.
+     *
+     * @param f the fraction to multiply by
+     * @return the result as a new object
      */
     @Override
     public Fraction multiply(Fraction f) {
@@ -254,6 +308,10 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * Facilitates division of one fraction by another, returning the result as a new object.
+     *
+     * @param f the fraction to be divided by
+     * @return the result of the division
      */
     @Override
     public Fraction divide(Fraction f) {
@@ -266,6 +324,11 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     *
+     * Returns the absolute value (distance from origin) of input fraction object.
+     *
+     *
+     * @returns absolute value of input fraction.
      */
     @Override
     public Fraction abs() {
@@ -280,6 +343,10 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     *
+     * Makes a positive fraction negative and vice versa.
+     *
+     * @return new fraction object that has the opposite sign to the input.
      */
     @Override
     public FractionImpl negate() {
@@ -313,6 +380,10 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     *
+     * Flips the fraction over, ie sets the numerator as denominator and vice versa.
+     *
+     * @return a new fraction object that is the inversion of the input one.
      */
     @Override
     public FractionImpl inverse() {
@@ -326,6 +397,11 @@ public class FractionImpl implements Fraction {
      * Positive output means the object upon which the method is called is larger.
      * Negative output means the object used as a parameter is larger.
      * Zero means that they are the same.
+     *
+     * @param o another fraction object with which to compare.
+     * @return an int showing the relationship between the object on which this is invoked and the param, see description
+     * for more info.
+     *
      */
     @Override
     public int compareTo(Fraction o) {
@@ -350,6 +426,13 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * Returns the stored fraction as a string in the format numerator / denominator.
+     * Whole numbers or zero will be returned without denominator, although this is still stored in the object.
+     * Output is parsed by the string constructor
+     *
+     * @see #FractionImpl(String)
+     *
+     * @return a string version of the fraction.
      */
     @Override
     public String toString() {
