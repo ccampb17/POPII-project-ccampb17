@@ -7,11 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        /*
         Fraction f = new FractionImpl(1, 2);
-        Fraction f2 = new FractionImpl("      4 /     -3    ");
-        Fraction f3 = new FractionImpl("1/2");
+        Fraction f2 = new FractionImpl("      70 /     6    ");
+        Fraction f3 = new FractionImpl("1/4");
 
-        System.out.println(f.equals(f3)+"\n");
+        System.out.println(f.compareTo(f3)+"\n");
 
 
         System.out.println(f.add(f2));
@@ -22,6 +23,6 @@ public class Main {
         System.out.println(f.inverse());
         System.out.println(f.negate());
         System.out.println(f2.abs());
-
+        */
     }
 }

@@ -55,7 +55,7 @@ public class FractionImpl implements Fraction {
         nmr = numerator;
         dmr = denominator;
 
-
+        //convert it to its lowest terms using helper method
         nmr = nmr/gcd(numerator, denominator);
         dmr = dmr/gcd(numerator, denominator);
 
@@ -259,7 +259,10 @@ public class FractionImpl implements Fraction {
         //throw exc if dmr is 0
         if (dmr == 0) throw new ArithmeticException("Denominator cannot be zero because maths.");
 
-
+        //convert it to its lowest terms using helper method
+        int gcd = gcd(nmr, dmr);
+        nmr = nmr/gcd;
+        dmr = dmr/gcd;
 
     }
 
@@ -425,16 +428,25 @@ public class FractionImpl implements Fraction {
 
         // Convert them to floats to compare their values, unless they are the same
         // because can't do float == float
-        float thisdec = nmr/dmr;
-        float thatdec = ((FractionImpl)o).nmr/((FractionImpl)o).dmr;
+        float thisdec = (float)nmr/(float)dmr;
+        float thatdec = (float)((FractionImpl)o).nmr/(float)((FractionImpl)o).dmr;
 
+
+        //the if statements below mean it will return the difference between the two
+        // to the nearest nonzero integer
+
+        int difference = Math.round(Math.abs(thisdec - thatdec));
 
         if (thisdec > thatdec) {
-            return Math.round(Math.abs(thisdec - thatdec));
+            if (difference == 0) return 1;
+            else return difference;
         }
+
         else if (thatdec > thisdec) {
-            return Math.round(-1*(Math.abs(thisdec - thatdec)));
+            if (difference == 0) return -1;
+            else return (-1*difference);
         }
+
         else { //if (nmr == ((FractionImpl)o).nmr & dmr == ((FractionImpl)o).dmr) {
             return 0;
         }
@@ -463,4 +475,6 @@ public class FractionImpl implements Fraction {
         }
 
     }
+
+
 }
