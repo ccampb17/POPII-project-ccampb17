@@ -73,8 +73,8 @@ public class FractionImpl implements Fraction {
 
     }
 
-    // helper method to find the greatest common divisor of two ints... see below for my fun tangent to find the
-    // lowest common divisor...
+    // helper method to find the greatest common divisor of two ints.
+    // see below for my fun tangent to find the lowest common divisor...
 
     /**
      * Finds the greatest common divisor of two integers.
@@ -204,6 +204,9 @@ public class FractionImpl implements Fraction {
      *
      *     I tried to keep it short and sweet, using regular expression-based methods instead of iterating over the
      *     input string and looking for particular characters.
+     *
+     *     This method is also the point where most types of bad inputs will be caught. This saves having to worry about
+     *     putting try-catch clauses everywhere else.
      * </p>
      *
      * @param fraction the string representation of the fraction
@@ -252,6 +255,9 @@ public class FractionImpl implements Fraction {
             nmr *= -1;
             dmr *= -1;
         }
+
+        //throw exc if dmr is 0
+        if (dmr == 0) throw new ArithmeticException("Denominator cannot be zero because maths.");
 
 
 

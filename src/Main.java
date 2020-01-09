@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         Fraction f = new FractionImpl(1, 2);
-        Fraction f2 = new FractionImpl("      4 /     -3    ");
+        Fraction f2 = new FractionImpl("      4 /     -0    ");
         Fraction f3 = new FractionImpl(0, 4);
 
         System.out.println(f3+"\n");

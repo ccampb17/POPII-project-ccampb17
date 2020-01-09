@@ -8,6 +8,7 @@ class FractionImplTest {
 
     @Test
     void gcd() {
+        assertEquals(5, gcd(15, 20));
     }
 
     @Test
