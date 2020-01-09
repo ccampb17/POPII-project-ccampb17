@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e819431-8455-41c8-93fc-0f529daabc85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fraction/FractionImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fraction/FractionImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fraction/FractionImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fraction/FractionImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
+            <state relative-caret-position="221">
+              <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,7 +30,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fraction/Fraction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -39,21 +39,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fraction/FractionImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="259" column="15" selection-start-line="259" selection-start-column="15" selection-end-line="259" selection-end-column="15" />
+            <state relative-caret-position="262">
+              <caret line="392" column="13" lean-forward="true" selection-start-line="392" selection-start-column="13" selection-end-line="392" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#listPrimesTo#0;class#FractionImpl#0" />
                 <element signature="method#isPrime#0;class#FractionImpl#0" />
                 <element signature="docComment;method#lcd#0;class#FractionImpl#0" />
                 <element signature="method#lcd#0;class#FractionImpl#0" />
                 <element signature="e#10808#10809#0" expanded="true" />
                 <element signature="e#10847#10848#0" expanded="true" />
-                <element signature="e#10937#10938#0" expanded="true" />
-                <element signature="e#10977#10978#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,8 +59,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fraction/FractionImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+            <state relative-caret-position="486">
+              <caret line="60" column="40" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#770#779#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1112#1113#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,6 +90,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>listprimes</find>
+      <find>equal</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -98,8 +107,8 @@
         <option value="$PROJECT_DIR$/src/fraction/Fraction.java" />
         <option value="$PROJECT_DIR$/src/fraction/FractionImplTest_orig.java" />
         <option value="$PROJECT_DIR$/src/fraction/FractionImplTest.java" />
-        <option value="$PROJECT_DIR$/src/fraction/FractionImpl.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/fraction/FractionImpl.java" />
       </list>
     </option>
   </component>
@@ -187,13 +196,77 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.FractionImplTest.addTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="POPII-project-ccampb17" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FractionImplTest.addTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="POPII-project-ccampb17" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fraction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fraction" />
+      <option name="MAIN_CLASS_NAME" value="fraction.FractionImplTest" />
+      <option name="METHOD_NAME" value="addTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FractionImplTest.gcdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="POPII-project-ccampb17" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fraction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fraction" />
+      <option name="MAIN_CLASS_NAME" value="fraction.FractionImplTest" />
+      <option name="METHOD_NAME" value="gcdTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FractionImplTest.lcdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="POPII-project-ccampb17" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fraction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fraction" />
+      <option name="MAIN_CLASS_NAME" value="fraction.FractionImplTest" />
+      <option name="METHOD_NAME" value="lcdTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FractionImplTest.listPrimesToTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="POPII-project-ccampb17" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fraction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fraction" />
+      <option name="MAIN_CLASS_NAME" value="fraction.FractionImplTest" />
+      <option name="METHOD_NAME" value="listPrimesToTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -211,10 +284,18 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="JUnit.FractionImplTest.gcdTest" />
+      <item itemvalue="JUnit.FractionImplTest.listPrimesToTest" />
+      <item itemvalue="JUnit.FractionImplTest.lcdTest" />
+      <item itemvalue="JUnit.FractionImplTest.addTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FractionImplTest.addTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.FractionImplTest.lcdTest" />
+        <item itemvalue="JUnit.FractionImplTest.listPrimesToTest" />
+        <item itemvalue="JUnit.FractionImplTest.gcdTest" />
       </list>
     </recent_temporary>
   </component>
@@ -233,12 +314,38 @@
       <workItem from="1576842703853" duration="647000" />
       <workItem from="1578326908494" duration="8362000" />
       <workItem from="1578399928693" duration="9182000" />
-      <workItem from="1578570178827" duration="1675000" />
+      <workItem from="1578570178827" duration="5859000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="FractionImplTest_gcdTest - 2020.01.09 at 12h 17m 51s.xml">
+      <configuration name="FractionImplTest.gcdTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_gcdTest - 2020.01.09 at 12h 18m 57s.xml">
+      <configuration name="FractionImplTest.gcdTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_listPrimesToTest - 2020.01.09 at 13h 09m 47s.xml">
+      <configuration name="FractionImplTest.listPrimesToTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_lcdTest - 2020.01.09 at 13h 48m 19s.xml">
+      <configuration name="FractionImplTest.lcdTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_lcdTest - 2020.01.09 at 13h 49m 28s.xml">
+      <configuration name="FractionImplTest.lcdTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_lcdTest - 2020.01.09 at 13h 56m 07s.xml">
+      <configuration name="FractionImplTest.lcdTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_addTest - 2020.01.09 at 13h 56m 10s.xml">
+      <configuration name="FractionImplTest.addTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FractionImplTest_addTest - 2020.01.09 at 13h 58m 35s.xml">
+      <configuration name="FractionImplTest.addTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27770000" />
+    <option name="totallyTimeSpent" value="31954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -319,35 +426,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fraction/FractionImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fraction/FractionImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="259" column="15" selection-start-line="259" selection-start-column="15" selection-end-line="259" selection-end-column="15" />
+        <state relative-caret-position="486">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#listPrimesTo#0;class#FractionImpl#0" />
-            <element signature="method#isPrime#0;class#FractionImpl#0" />
-            <element signature="docComment;method#lcd#0;class#FractionImpl#0" />
-            <element signature="method#lcd#0;class#FractionImpl#0" />
-            <element signature="e#10808#10809#0" expanded="true" />
-            <element signature="e#10847#10848#0" expanded="true" />
-            <element signature="e#10937#10938#0" expanded="true" />
-            <element signature="e#10977#10978#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#770#779#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -356,6 +441,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fraction/FractionImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="392" column="13" lean-forward="true" selection-start-line="392" selection-start-column="13" selection-end-line="392" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#isPrime#0;class#FractionImpl#0" />
+            <element signature="docComment;method#lcd#0;class#FractionImpl#0" />
+            <element signature="method#lcd#0;class#FractionImpl#0" />
+            <element signature="e#10808#10809#0" expanded="true" />
+            <element signature="e#10847#10848#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

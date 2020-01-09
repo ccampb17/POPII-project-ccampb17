@@ -370,11 +370,22 @@ public class FractionImpl implements Fraction {
 
     /**
      * @inheritDoc
+     * Checks if two fractions are of equal value.
+     * Fractions are automatically stored in their lowest terms by this class so no need to worry about checking for that.
+     * Checks the object being tested is a fraction first to allow inherited equals() to work too.
+     *
+     * @param obj other fraction object to be compared to for equality
+     * @return true if equal, false if not
      */
     @Override
     public boolean equals(Object obj) {
+        if (obj instanceof Fraction) {
+            return (nmr == ((FractionImpl)obj).nmr && dmr == ((FractionImpl)obj).dmr);
+        }
+        else {
         return super.equals(obj);
-    }
+        }
+        }
 
     /**
      * @inheritDoc
