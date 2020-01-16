@@ -44,6 +44,7 @@ public class FractionImpl implements Fraction {
      *
      * @param numerator integer that will be the numerator
      * @param denominator   integer that will be the denominator
+     * @throws ArithmeticException if the denominator provided is zero
      */
 
     public FractionImpl(int numerator, int denominator) {
@@ -210,6 +211,8 @@ public class FractionImpl implements Fraction {
      * </p>
      *
      * @param fraction the string representation of the fraction
+     * @throws NumberFormatException if the input isn't the correct format
+     * @throws ArithmeticException if the denominator provided is zero
      */
 
 
@@ -277,6 +280,7 @@ public class FractionImpl implements Fraction {
     public Fraction add(Fraction f) {
 
 
+
         //to calculate x/y + w/z
         // you do
         //(x*z)+(w*y)/(y*z)
@@ -294,6 +298,7 @@ public class FractionImpl implements Fraction {
      */
     @Override
     public Fraction subtract(Fraction f) {
+
 
         //same as adding but with a minus sign
         return new FractionImpl(((this.nmr*((FractionImpl)f).dmr) - (((FractionImpl)f).nmr*this.dmr)), (this.dmr*((FractionImpl)f).dmr));
@@ -321,6 +326,7 @@ public class FractionImpl implements Fraction {
      *
      * @param f the fraction to be divided by
      * @return the result of the division
+     * @throws ArithmeticException if either of the fractions is zero
      */
     @Override
     public Fraction divide(Fraction f) {
@@ -328,6 +334,8 @@ public class FractionImpl implements Fraction {
         //to calculate x/y ÷ w/z
         //you flip the second one and multiply, i.e.:
         // (x*z) / (y*w)
+
+        if (nmr == 0 | ((FractionImpl)f).nmr == 0) throw new ArithmeticException("Don't try and divide by zero!");
         return new FractionImpl((this.nmr*((FractionImpl)f).dmr), (this.dmr*((FractionImpl)f).nmr));
     }
 
@@ -404,10 +412,14 @@ public class FractionImpl implements Fraction {
      * Flips the fraction over, ie sets the numerator as denominator and vice versa.
      *
      * @return a new fraction object that is the inversion of the input one.
+     * @throws ArithmeticException if trying to create a fraction with denominator of zero.
      */
+
     @Override
     public FractionImpl inverse() {
         //set the numerator as the denominator and vice versa
+
+        if (nmr == 0) throw new ArithmeticException("You're trying to make a fraction with a zero denominator and that is not allowed.");
         return new FractionImpl(this.dmr, this.nmr);
     }
 
